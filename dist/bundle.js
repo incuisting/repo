@@ -79,18 +79,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 function component() {
-	  //var element = document.createElement('div');
-	var element = __WEBPACK_IMPORTED_MODULE_1_jquery___default()('<div></div>');
-	  // Lodash, currently included via a script, is required for this line to work
-	   element.html( __WEBPACK_IMPORTED_MODULE_0_lodash___default.a.join(['Hello', 'webpack'], ' '));
-	
-	     return element.get(0);
-	     }
-	
-	     document.body.appendChild(component());
+    //var element = document.createElement('div');
+    var element = __WEBPACK_IMPORTED_MODULE_1_jquery___default()('<div></div>');
+    // Lodash, currently included via a script, is required for this line to work
+    element.html(__WEBPACK_IMPORTED_MODULE_0_lodash___default.a.join(['Hello', 'webpack'], ' '));
+
+    return element.get(0);
+}
+
+document.body.appendChild(component());
 console.log(__WEBPACK_IMPORTED_MODULE_2__app__["a" /* default */]);
 console.log(Object(__WEBPACK_IMPORTED_MODULE_2__app__["a" /* default */])());
-
 
 /***/ }),
 /* 1 */
