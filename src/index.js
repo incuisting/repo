@@ -8,6 +8,6 @@ import registerServiceWorker from './registerServiceWorker';
 
 
 ReactDOM.render(
-    <Welcome/>,
+    <Welcome name="react"/>,
     document.getElementById('root')
 )
