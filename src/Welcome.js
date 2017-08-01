@@ -4,29 +4,65 @@ class Welcome extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            date: new Date()
+            date: new Date(),
+            test:'1'
         }
-        setInterval(()=>{
-            this.setState({
-                date: new Date() //update date
-            })
+        this.setState({
+            date: new Date(),
+            test:'constructor'
         })
-        console.log('我已经在constructor 里将props和state初始化好了')
     }
     componentWillMount(){
-        console.log('运行到这里的话，说明马上就要运行render了')
+        this.setState({
+            date: new Date(),
+            test:'componentWillMount'
+        })
     }
     render() {
-        console.log('这里是render')
+        this.setState({
+            date: new Date(),
+            test:'render'
+        })
         return (
             <div>
                 <h1>Hello,{this.props.name}</h1>
                 <h2>{this.state.date.toString()}</h2>
+                <p>{this.state.test}</p>
             </div>
         )
     }
     componentDidMount(){
-        console.log('已经挂载到页面里了')
+        this.setState({
+            date: new Date(),
+            test:'componentDidMount'
+        })
+    }
+    componentWillReceiveProps(){
+        this.setState({
+            date: new Date(),
+            test:'componentWillReceiveProps'
+        })
+    }
+    shouldComponentUpdate(){
+        this.setState({
+            date: new Date(),
+            test:'shouldComponentUpdate'
+        })
+    }
+    componentWillUpdate(){
+        this.setState({
+            date: new Date(),
+            test:'componentWillUpdate'
+        })
+    }
+    componentDidUpdate(){
+        this.setState({
+            date: new Date(),
+            test:'componentDidUpdate'
+        })
+    }
+    componentWillUnmount(){
+        console.log('要死了')
     }
 }
 
