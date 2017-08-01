@@ -5,24 +5,26 @@ class Welcome extends React.Component {
         super(props)
         this.state = {
             date: new Date(),
-            test:'1'
+            test: '1'
         }
+        setInterval(() => {
+            this.setState({
+                date: new Date(), // 更新 date
+                test: 'setInterval'
+            })
+        }, 5000)
+        console.log('我已经在 constructor 里将 props 和 state 初始化好了')
+    }
+
+    componentWillMount() {
         this.setState({
             date: new Date(),
-            test:'constructor'
+            test: 'componentWillMount'
         })
     }
-    componentWillMount(){
-        this.setState({
-            date: new Date(),
-            test:'componentWillMount'
-        })
-    }
+
     render() {
-        this.setState({
-            date: new Date(),
-            test:'render'
-        })
+        console.log('这里是render')
         return (
             <div>
                 <h1>Hello,{this.props.name}</h1>
@@ -31,39 +33,49 @@ class Welcome extends React.Component {
             </div>
         )
     }
-    componentDidMount(){
+
+    componentDidMount() {
         this.setState({
             date: new Date(),
-            test:'componentDidMount'
+            test: 'componentDidMount'
         })
+        console.log('已经挂载到页面里了')
     }
-    componentWillReceiveProps(){
+
+    componentWillReceiveProps() {
         this.setState({
             date: new Date(),
-            test:'componentWillReceiveProps'
+            test: 'componentWillReceiveProps'
         })
     }
-    shouldComponentUpdate(){
+
+    shouldComponentUpdate() {
         this.setState({
             date: new Date(),
-            test:'shouldComponentUpdate'
+            test: 'shouldComponentUpdate'
         })
+        return true
     }
-    componentWillUpdate(){
-        this.setState({
-            date: new Date(),
-            test:'componentWillUpdate'
-        })
+
+    componentWillUpdate() {
+
     }
-    componentDidUpdate(){
-        this.setState({
-            date: new Date(),
-            test:'componentDidUpdate'
-        })
+
+    componentDidUpdate() {
+
     }
-    componentWillUnmount(){
+
+    componentWillUnmount() {
         console.log('要死了')
     }
 }
 
 export default Welcome
+/*
+我们只在这几个钩子里 setState：
+
+componentWillMount
+componentDidMount
+componentWillReceiveProps
+componentDidUpdate
+ */
