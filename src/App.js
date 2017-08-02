@@ -27,7 +27,7 @@ class App extends Component {
             )
         })
 
-        console.log(todos)
+        console.log('todolist', this.state.todoList)
         return (
             <div className="App">
                 <h1>我的待办</h1>
@@ -36,7 +36,7 @@ class App extends Component {
                                onChange={this.changeTitle.bind(this)}
                                onSubmit={this.addTodo.bind(this)}/>
                 </div>
-                <ol>
+                <ol className="todoList">
                     {todos}
                 </ol>
             </div>
