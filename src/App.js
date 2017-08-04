@@ -4,7 +4,6 @@ import './reset.css';
 import './App.css';
 import TodoInput from './TodoInput'
 import TodoItem from './TodoItem'
-import * as localStore from './localStorage'
 
 
 
@@ -14,7 +13,7 @@ class App extends Component {
         super(props)
         this.state = {
             newTodo: '',
-            todoList:localStore.load('todoList') || []
+            todoList:[]
         }
     }
 
@@ -51,12 +50,10 @@ class App extends Component {
         todo.deleted = true
         this.setState(this.state)
         console.log('delete',todo.deleted)
-        localStore.save('todoList',this.state.todoList)
     }
     toggle(event, todo) {
         todo.status = todo.status === 'completed' ? '' : 'completed'
         this.setState(this.state)
-        localStore.save('todoList',this.state.todoList)
     }
 
     changeTitle(event) {
@@ -64,7 +61,6 @@ class App extends Component {
             newTodo: event.target.value,
             todoList: this.state.todoList
         })
-        localStore.save('todoList',this.state.todoList)
     }
 
     addTodo(event) {
@@ -78,7 +74,6 @@ class App extends Component {
             newTodo: '',
             todoList: this.state.todoList
         })
-        localStore.save('todoList',this.state.todoList)
         console.log('newTodo',this.state.newTodo)
     }
 }
