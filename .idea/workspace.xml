@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dcea100b-2989-4fda-a453-ff89d4d9f32c" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/UserDialog.css" afterPath="$PROJECT_DIR$/src/UserDialog.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/UserDialog.js" afterPath="$PROJECT_DIR$/src/UserDialog.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -41,8 +39,8 @@
       <file leaf-file-name="UserDialog.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/UserDialog.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="441">
-              <caret line="23" column="88" lean-forward="true" selection-start-line="23" selection-start-column="88" selection-end-line="23" selection-end-column="88" />
+            <state relative-caret-position="535">
+              <caret line="52" column="13" lean-forward="false" selection-start-line="52" selection-start-column="13" selection-end-line="52" selection-end-column="13" />
               <folding>
                 <element signature="e#0#38#0" expanded="true" />
               </folding>
@@ -211,12 +209,12 @@
       <workItem from="1501763997082" duration="20000" />
       <workItem from="1501847190469" duration="41000" />
       <workItem from="1501847270089" duration="5453000" />
-      <workItem from="1501855824194" duration="1204000" />
+      <workItem from="1501855824194" duration="1699000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="29977000" />
+    <option name="totallyTimeSpent" value="30472000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="586" y="5" width="1357" height="953" extended-state="0" />
@@ -636,8 +634,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/UserDialog.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="441">
-          <caret line="23" column="88" lean-forward="true" selection-start-line="23" selection-start-column="88" selection-end-line="23" selection-end-column="88" />
+        <state relative-caret-position="535">
+          <caret line="52" column="13" lean-forward="false" selection-start-line="52" selection-start-column="13" selection-end-line="52" selection-end-column="13" />
           <folding>
             <element signature="e#0#38#0" expanded="true" />
           </folding>
