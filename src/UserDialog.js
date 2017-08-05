@@ -22,20 +22,21 @@ export default class UserDialog extends Component {
 
     signUp(e) {
         e.preventDefault()
-        let {username,password} = this.state.formData
-        let success =(user) =>{
-            this.props.onSignUp.call(null,user)
+        let {username, password} = this.state.formData
+        let success = (user) => {
+            this.props.onSignUp.call(null, user)
         }
-        let error = (error)=>{
+        let error = (error) => {
             console.log(error)
         }
-        signUp(username,password,success,error)
+        signUp(username, password, success, error)
     }
 
     signIn(e) {
 
     }
-    changeFormData(key,e){
+
+    changeFormData(key, e) {
         let stateCopy = JSON.parse(JSON.stringify(this.state)) //JSON深拷贝
         stateCopy.formData[key] = e.target.value
         this.setState(stateCopy)
@@ -48,13 +49,13 @@ export default class UserDialog extends Component {
                     <div className="row">
                         <label>用户名</label>
                         <input type="text" value={this.state.formData.username}
-                               onChange={this.changeFormData.bind(this,'username')}
+                               onChange={this.changeFormData.bind(this, 'username')}
                         />
                     </div>
                     <div className="row">
                         <label>密码</label>
                         <input type="password" value={this.state.formData.password}
-                               onChange={this.changeFormData.bind(this,'password')}
+                               onChange={this.changeFormData.bind(this, 'password')}
                         />
                     </div>
                     <div className="row actions">
@@ -69,12 +70,12 @@ export default class UserDialog extends Component {
                     <div className="row">
                         <label>用户名</label>
                         <input type="text" value={this.state.formData.username}
-                               onChange={this.changeFormData.bind(this,'username')}/>
+                               onChange={this.changeFormData.bind(this, 'username')}/>
                     </div>
                     <div className="row">
                         <label>密码</label>
                         <input type="password" value={this.state.formData.password}
-                               onChange={this.changeFormData.bind(this,'password')}
+                               onChange={this.changeFormData.bind(this, 'password')}
                         />
                     </div>
                     <div className="row actions">
@@ -87,11 +88,13 @@ export default class UserDialog extends Component {
                 <div className="UserDialog">
                     <nav onChange={this.switch.bind(this)}>
                         <label>
-                            <input type="radio" value='signUp' checked={this.state.selected === 'signUp'}/>注册
-                        </label>
+                            <input type="radio" value='signUp' checked={this.state.selected === 'signUp'}
+                                   onChange={this.switch.bind(this)}
+                            />注册</label>
                         <label>
-                            <input type="radio" value='signIn' checked={this.state.selected === 'signIn'}/>登入
-                        </label>
+                            <input type="radio" value='signIn' checked={this.state.selected === 'signIn'}
+                                   onChange={this.switch.bind(this)}
+                            />登入 </label>
 
                     </nav>
                     <div className="panes">
