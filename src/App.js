@@ -5,14 +5,14 @@ import './App.css';
 import TodoInput from './TodoInput'
 import TodoItem from './TodoItem'
 import UserDialog from './UserDialog'
-import {getCurrentUser,signOut} from './leanCloud'
+import {getCurrentUser, signOut, TodoModel} from './leanCloud'
 
 
 class App extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            user:getCurrentUser()|| {},
+            user: getCurrentUser() || {},
             newTodo: '',
             todoList: []
         }
@@ -35,7 +35,7 @@ class App extends Component {
         return (
             <div className="App">
                 <h1>{this.state.user.username || '我'}的待办
-                    {this.state.user.id? <button onClick={this.signOut.bind(this)}>登出</button>:null}
+                    {this.state.user.id ? <button onClick={this.signOut.bind(this)}>登出</button> : null}
                 </h1>
                 <div className="inputWrapper">
                     <TodoInput content={this.state.newTodo}
@@ -49,18 +49,20 @@ class App extends Component {
                     null :
                     <UserDialog
                         onSignUp={this.onSignUpOrSignIn.bind(this)}
-                    onSignIn={this.onSignUpOrSignIn.bind(this)}/>}
+                        onSignIn={this.onSignUpOrSignIn.bind(this)}/>}
             </div>
 
         )
     }
-    onSignUpOrSignIn(user){
+
+    onSignUpOrSignIn(user) {
         let stateCopy = JSON.parse(JSON.stringify(this.state))
         stateCopy.user = user
         this.setState(stateCopy)
 
     }
-    signOut(){
+
+    signOut() {
         signOut()
         let stateCopy = JSON.parse(JSON.stringify(this.state))
         stateCopy.user = {}
@@ -86,26 +88,23 @@ class App extends Component {
     }
 
     addTodo(event) {
-        this.state.todoList.push({
-            id: idMaker(),
+        let newTodo = {
             title: event.target.value,
             status: null,
             deleted: false
+        }
+        TodoModel.create(newTodo, (id) => {
+            console.log('id', id)
+            newTodo.id = id
+            this.state.todoList.push(newTodo)
+            this.setState({
+                newTodo: '',
+                todoList: this.state.todoList
+            })
+        }, (error) => {
+            console.log(error)
         })
-        this.setState({
-            newTodo: '',
-            todoList: this.state.todoList
-        })
-        console.log('newTodo', this.state.newTodo)
     }
 }
 
 export default App;
-
-
-let id = 0
-
-function idMaker() {
-    id += 1
-    return id
-}
