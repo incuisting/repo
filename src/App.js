@@ -7,34 +7,33 @@ import TodoItem from './TodoItem'
 import UserDialog from './UserDialog'
 
 
-
 class App extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            user:{},
+            user: {},
             newTodo: '',
-            todoList:[]
+            todoList: []
         }
     }
 
     render() {
         let todos = this.state.todoList
-            .filter((item)=> !item.deleted)
+            .filter((item) => !item.deleted)
             .map((item, index) => {
-            return (
-                <li key={item.id}>
-                    <TodoItem todo={item} onToggle={this.toggle.bind(this)}
-                              onDelete={this.delete.bind(this)}
-                    />
-                </li>
-            )
-        })
+                return (
+                    <li key={item.id}>
+                        <TodoItem todo={item} onToggle={this.toggle.bind(this)}
+                                  onDelete={this.delete.bind(this)}
+                        />
+                    </li>
+                )
+            })
 
         console.log('todolist', this.state.todoList)
         return (
             <div className="App">
-                <h1>{this.state.user.username||'我'}的待办</h1>
+                <h1>{this.state.user.username || '我'}的待办</h1>
                 <div className="inputWrapper">
                     <TodoInput content={this.state.newTodo}
                                onChange={this.changeTitle.bind(this)}
@@ -43,22 +42,25 @@ class App extends Component {
                 <ol className="todoList">
                     {todos}
                 </ol>
-                <UserDialog onSignUp={this.onSignUp.bind(this)}/>
+                {this.state.user.id ? null : <UserDialog onSignUp={this.onSignUp.bind(this)}/>}
             </div>
 
         )
     }
-    onSignUp(user){
+
+    onSignUp(user) {
         let stateCopy = JSON.parse(JSON.stringify(this.state))
         stateCopy.user = user
         this.setState(stateCopy)
 
     }
-    delete(event,todo){
+
+    delete(event, todo) {
         todo.deleted = true
         this.setState(this.state)
-        console.log('delete',todo.deleted)
+        console.log('delete', todo.deleted)
     }
+
     toggle(event, todo) {
         todo.status = todo.status === 'completed' ? '' : 'completed'
         this.setState(this.state)
@@ -82,7 +84,7 @@ class App extends Component {
             newTodo: '',
             todoList: this.state.todoList
         })
-        console.log('newTodo',this.state.newTodo)
+        console.log('newTodo', this.state.newTodo)
     }
 }
 
