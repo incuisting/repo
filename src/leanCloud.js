@@ -13,6 +13,7 @@ export const TodoModel = {
     getByUser(user, successFn, errorFn) {
         console.log('user', user)
         let query = new AV.Query('Todo')
+        query.equalTo('deleted',false)
         query.find().then((response) => {
             console.log('response', response)
             let array = response.map((t) => {
@@ -36,6 +37,7 @@ export const TodoModel = {
         let acl = new AV.ACL()
         acl.setPublicReadAccess(false) // false的意思为 仅自己可读
         acl.setWriteAccess(AV.User.current(), true) //自己可写
+        acl.setReadAccess(AV.User.current(),true) //自己可读
 
         todo.setACL(acl) //将 ACL 实例赋予 todo 对象
 
