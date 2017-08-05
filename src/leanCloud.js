@@ -10,15 +10,17 @@ export default AV
 
 //所有跟 Todo 相关的 LeanCloud 操作都放到这里
 export const TodoModel = {
-    getByUser(user,successFn,errorFn){
+    getByUser(user, successFn, errorFn) {
         let query = new AV.Query('Todo')
-        query.find().then((response) =>{
-            let array = response.may((t)=>{
-                return {id:t.id,...t.attributes}
+        query.find().then((response) => {
+            console.log('response',response)
+            let array = response.map((t) => {
+                return {id: t.id, ...t.attributes}
             })
-            successFn.call(null,array)
-        }, (error)=>{
-            errorFn && errorFn.call(null,error)
+            console.log('array', array)
+            successFn.call(null, array)
+        }, (error) => {
+            errorFn && errorFn.call(null, error)
         })
     },
     create({status, title, deleted}, successFn, errorFn) {
@@ -95,7 +97,6 @@ export function sendPasswordResetEmail(email, successFn, errorFn) {
 }
 
 function getUserFromAVUser(AVUser) {
-    console.log('AVUser', AVUser)
     return {
         id: AVUser.id,
         ...AVUser.attributes

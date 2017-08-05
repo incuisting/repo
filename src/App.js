@@ -40,7 +40,6 @@ class App extends Component {
                 )
             })
 
-        console.log('todolist', this.state.todoList)
         return (
             <div className="App">
                 <h1>{this.state.user.username || '我'}的待办
