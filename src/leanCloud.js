@@ -10,6 +10,17 @@ export default AV
 
 //所有跟 Todo 相关的 LeanCloud 操作都放到这里
 export const TodoModel = {
+    getByUser(user,successFn,errorFn){
+        let query = new AV.Query('Todo')
+        query.find().then((response) =>{
+            let array = response.may((t)=>{
+                return {id:t.id,...t.attributes}
+            })
+            successFn.call(null,array)
+        }, (error)=>{
+            errorFn && errorFn.call(null,error)
+        })
+    },
     create({status, title, deleted}, successFn, errorFn) {
         let Todo = AV.Object.extend('Todo')
         let todo = new Todo()
