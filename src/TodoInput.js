@@ -11,7 +11,7 @@ function submit(props, event) {
 
 function changeTitle(props, event) {
     props.onChange(event)
-    console.log('changeTitle', this)
+    console.log('changeTitle', event)
 }
 
 export default function (props) {

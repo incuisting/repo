@@ -78,14 +78,23 @@ class App extends Component {
     }
 
     delete(event, todo) {
-        todo.deleted = true
-        this.setState(this.state)
-        console.log('delete', todo.deleted)
+
+        TodoModel.destroy(todo.id,()=>{
+            todo.deleted = true
+            this.setState(this.state)
+        })
     }
 
     toggle(event, todo) {
+        let oldStatus = todo.status
         todo.status = todo.status === 'completed' ? '' : 'completed'
-        this.setState(this.state)
+        TodoModel.update(todo,()=>{
+            this.setState(this.state)
+
+        },(error)=>{
+            todo.status = oldStatus
+            this.setState(this.state)
+        })
     }
 
     changeTitle(event) {
@@ -98,7 +107,7 @@ class App extends Component {
     addTodo(event) {
         let newTodo = {
             title: event.target.value,
-            status: null,
+            status: '',
             deleted: false
         }
         TodoModel.create(newTodo, (id) => {
