@@ -38,6 +38,15 @@
     width: 4em;
 }
 
-.UserDialo form>.row.actions{
+.UserDialog form>.row.actions{
     padding-left: 4em;
+    display: flex;
+    align-items: center;
+}
+.UserDialog form>.row.actions button{
+    margin-right:.5em;
+}
+.UserDialog button{
+    font: inherit;
+    padding: .2em;
 }
