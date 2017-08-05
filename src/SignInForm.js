@@ -2,21 +2,21 @@ import React from 'react'
 
 export default function (props) {
     return(
-        <form className="signIn" onSubmit={this.signIn.bind(this)}>
+        <form className="signIn" onSubmit={props.onSubmit}>
             <div className="row">
                 <label>用户名</label>
-                <input type="text" value={this.state.formData.username}
-                       onChange={this.changeFormData.bind(this, 'username')}/>
+                <input type="text" value={props.formData.username}
+                       onChange={props.onChange.bind(null, 'username')}/>
             </div>
             <div className="row">
                 <label>密码</label>
-                <input type="password" value={this.state.formData.password}
-                       onChange={this.changeFormData.bind(this, 'password')}
+                <input type="password" value={props.formData.password}
+                       onChange={props.onChange.bind(null, 'password')}
                 />
             </div>
             <div className="row actions">
                 <button type="submit">登入</button>
-                <a href="#" onClick={this.showForgotPassword.bind(this)}>忘记密码</a>
+                <a href="#" onClick={props.onForgotPassword}>忘记密码</a>
             </div>
         </form>
     )

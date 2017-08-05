@@ -1,15 +1,19 @@
 import React, {Component} from 'react'
 import './UserDialog.css'
-import {signUp,signIn,sendPasswordResetEmail} from './leanCloud'
+import {signUp, signIn, sendPasswordResetEmail} from './leanCloud'
+import SignUpForm from './SignUpForm'
+import SignInForm from './SignInForm'
+import ForgotPasswordForm from './ForgotPasswordForm'
+
 
 export default class UserDialog extends Component {
     constructor(props) {
         super(props)
         this.state = {
             selected: 'signUp',
-            selectedTab:'signInOrSignUp',
+            selectedTab: 'signInOrSignUp',
             formData: {
-                email:'',
+                email: '',
                 username: '',
                 password: ''
             }
@@ -24,12 +28,12 @@ export default class UserDialog extends Component {
 
     signUp(e) {
         e.preventDefault()
-        let {email,username, password} = this.state.formData
+        let {email, username, password} = this.state.formData
         let success = (user) => {
             this.props.onSignUp.call(null, user)
         }
         let error = (error) => {
-            switch (error.code){
+            switch (error.code) {
                 case 202:
                     alert('用户名已被占用')
                     break
@@ -38,7 +42,7 @@ export default class UserDialog extends Component {
                     break
             }
         }
-        signUp(email,username, password, success, error)
+        signUp(email, username, password, success, error)
     }
 
     signIn(e) {
@@ -48,7 +52,7 @@ export default class UserDialog extends Component {
             this.props.onSignUp.call(null, user)
         }
         let error = (error) => {
-            switch (error.code){
+            switch (error.code) {
                 case 210:
                     alert('用户名与密码不匹配')
                     break
@@ -62,7 +66,6 @@ export default class UserDialog extends Component {
     }
 
 
-
     changeFormData(key, e) {
         let stateCopy = JSON.parse(JSON.stringify(this.state)) //JSON深拷贝
         stateCopy.formData[key] = e.target.value
@@ -71,7 +74,7 @@ export default class UserDialog extends Component {
 
     render() {
 
-        let signInOrSignUp=(
+        let signInOrSignUp = (
             <div className="signInOrSignUp">
                 <nav>
                     <label>
@@ -85,49 +88,51 @@ export default class UserDialog extends Component {
 
                 </nav>
                 <div className="panes">
-                    {this.state.selected === 'signUp' ? signUpForm : null}
-                    {this.state.selected === 'signIn' ? signInForm : null}
-                </div>
-            </div>
-        )
-        let forgotPassword=(
-            <div className="forgotPassword">
-                <h3>
-                    重置密码
-                </h3>
-                <form className="forgotPassword" onSubmit={this.resetPassword.bind(this)}>
-                    <div className="row">
-                        <label>邮箱</label>
-                        <input type="text" value={this.state.formData.email}
-                            onChange={this.changeFormData.bind(this,'email')}
+                    {this.state.selected === 'signUp' ?
+                        <SignUpForm formData={this.state.formData}
+                                    onSubmit={this.signUp.bind(this)}
+                                    onChange={this.changeFormData.bind(this)}
                         />
-                    </div>
-                    <div className="row actions">
-                        <button type="submit">发送重置邮件</button>
-                        <a href="#" onClick={this.returnToSignIn.bind(this)}>返回</a>
-                    </div>
-                </form>
+                        : null}
+                    {this.state.selected === 'signIn' ?
+                        <SignInForm formData={this.state.formData}
+                                    onSubmit={this.signIn.bind(this)}
+                                    onChange={this.changeFormData.bind(this)}
+                                    onForgotPassword={this.showForgotPassword.bind(this)}
+                        />
+                        : null}
+                </div>
             </div>
         )
         return (
             <div className="UserDialog-Wrapper">
                 <div className="UserDialog">
-                    {this.state.selectedTab === 'signInOrSignUp' ?signInOrSignUp:forgotPassword}
+                    {this.state.selectedTab === 'signInOrSignUp' ? signInOrSignUp :
+                        <ForgotPasswordForm
+                            formData = {this.state.formData}
+                            onSubmit = {this.resetPassword.bind(this)}
+                            onChange = {this.changeFormData.bind(this)}
+                            onSignIn = {this.returnToSignIn.bind(this)}
+                        />
+                    }
                 </div>
             </div>
         )
     }
-    returnToSignIn(){
+
+    returnToSignIn() {
         let stateCopy = JSON.parse(JSON.stringify(this.state)) //JSON深拷贝
         stateCopy.selectedTab = 'signInOrSignUp'
         this.setState(stateCopy)
     }
-    showForgotPassword(){
+
+    showForgotPassword() {
         let stateCopy = JSON.parse(JSON.stringify(this.state)) //JSON深拷贝
         stateCopy.selectedTab = 'forgotPassword'
         this.setState(stateCopy)
     }
-    resetPassword(e){
+
+    resetPassword(e) {
         e.preventDefault()
         sendPasswordResetEmail(this.state.formData.email)
         console.log(1)
