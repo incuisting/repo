@@ -2,6 +2,7 @@ import React ,{Component} from 'react'
 import SignUpForm from './SignUpForm'
 import SignInForm from './SignInForm'
 
+//登入或注册切换以及面板内容显示
 export default class SignInOrSignUp extends Component{
     constructor(props){
         super(props)

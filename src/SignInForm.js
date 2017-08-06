@@ -1,5 +1,6 @@
 import React from 'react'
 
+//登陆界面
 export default function (props) {
     return(
         <form className="signIn" onSubmit={props.onSubmit}>

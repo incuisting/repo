@@ -1,5 +1,7 @@
 import React from 'react'
 
+
+//注册界面
 export default function (props) {
     return(
         <form className="signUp" onSubmit={props.onSubmit.bind(this)}>

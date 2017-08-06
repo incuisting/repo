@@ -1,5 +1,6 @@
 import  React from 'react'
 
+//忘记密码页界面
 export default function (props) {
     return(
         <div className="forgotPassword">

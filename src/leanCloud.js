@@ -118,8 +118,9 @@ export function signIn(username, password, successFn, errorFn) {
 
 export function sendPasswordResetEmail(email, successFn, errorFn) {
     AV.User.requestPasswordReset(email).then((success) => {
-        successFn.call()
+        console.log('send')
         alert('邮件已发送')
+        successFn.call()
     }, (error) => {
         errorFn.call(null, error)
     })

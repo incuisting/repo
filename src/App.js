@@ -7,7 +7,7 @@ import TodoItem from './TodoItem'
 import UserDialog from './UserDialog'
 import {getCurrentUser, signOut, TodoModel} from './leanCloud'
 
-
+//主文件
 class App extends Component {
     constructor(props) {
         super(props)
@@ -17,6 +17,7 @@ class App extends Component {
             todoList: []
         }
 
+        //从leancloud获取用户信息
         let user = getCurrentUser()
         if(user){
             TodoModel.getByUser(user,(todos)=>{

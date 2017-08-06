@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import './TodoItem.css'
 
+//单条todo的逻辑
 export default class TodoItem extends Component {
     render() {
         return (

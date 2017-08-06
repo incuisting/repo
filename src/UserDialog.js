@@ -4,6 +4,8 @@ import {signUp, signIn, sendPasswordResetEmail} from './leanCloud'
 import ForgotPasswordForm from './ForgotPasswordForm'
 import SignInOrSignUp from './SignInOrSignUp'
 
+
+//登陆或注册弹窗
 export default class UserDialog extends Component {
     constructor(props) {
         super(props)
