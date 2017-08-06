@@ -7,15 +7,17 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background: rgba(0, 0, 0, 0.4);
+    background: #cc687a;
 }
 
 .UserDialog {
+    width: 50%;
+    height: 75%;
     border: 1px solid;
     border-radius: 4px;
     min-width: 20em;
     background: white;
-    box-shadow: 0 0 1em hsla(0, 0%, 0%, 0.35);
+    box-shadow: 0 0 12em hsla(0, 0%, 0%, 0.2);
 }
 
 .UserDialog .signInOrSignUp > nav:first-child {
