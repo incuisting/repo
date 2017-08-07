@@ -21,11 +21,12 @@ export default class SignInOrSignUp extends Component{
         return(
             <div className="signInOrSignUp">
                 <nav>
-                    <label>
+                    <label className={this.state.selected === 'signUp'?'RadioActive':null}>
                         <input type="radio" value='signUp' checked={this.state.selected === 'signUp'}
                                onChange={this.switch.bind(this)}
                         />注册</label>
-                    <label>
+                    <span>or</span>
+                    <label className={this.state.selected === 'signIn'?'RadioActive':null}>
                         <input type="radio" value='signIn' checked={this.state.selected === 'signIn'}
                                onChange={this.switch.bind(this)}
                         />登入 </label>

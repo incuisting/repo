@@ -3,7 +3,7 @@ import './UserDialog.css'
 import {signUp, signIn, sendPasswordResetEmail} from './leanCloud'
 import ForgotPasswordForm from './ForgotPasswordForm'
 import SignInOrSignUp from './SignInOrSignUp'
-
+import UserDialogCover from './UserDialogCover'
 
 //登陆或注册弹窗
 export default class UserDialog extends Component {
@@ -73,21 +73,24 @@ export default class UserDialog extends Component {
         return (
             <div className="UserDialog-Wrapper">
                 <div className="UserDialog">
-                    {this.state.selectedTab === 'signInOrSignUp' ?
-                        <SignInOrSignUp
-                            formData = {this.state.formData}
-                            onSignIn = {this.signIn.bind(this)}
-                            onSignUp = {this.signUp.bind(this)}
-                            onChange = {this.changeFormData.bind(this)}
-                            onForgotPassword = {this.showForgotPassword.bind(this)}
-                        /> :
-                        <ForgotPasswordForm
-                            formData = {this.state.formData}
-                            onSubmit = {this.resetPassword.bind(this)}
-                            onChange = {this.changeFormData.bind(this)}
-                            onSignIn = {this.returnToSignIn.bind(this)}
-                        />
-                    }
+                    <UserDialogCover/>
+                    <div className="UserPanes">
+                        {this.state.selectedTab === 'signInOrSignUp' ?
+                            <SignInOrSignUp
+                                formData = {this.state.formData}
+                                onSignIn = {this.signIn.bind(this)}
+                                onSignUp = {this.signUp.bind(this)}
+                                onChange = {this.changeFormData.bind(this)}
+                                onForgotPassword = {this.showForgotPassword.bind(this)}
+                            /> :
+                            <ForgotPasswordForm
+                                formData = {this.state.formData}
+                                onSubmit = {this.resetPassword.bind(this)}
+                                onChange = {this.changeFormData.bind(this)}
+                                onSignIn = {this.returnToSignIn.bind(this)}
+                            />
+                        }
+                    </div>
                 </div>
             </div>
         )

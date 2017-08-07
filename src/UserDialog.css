@@ -7,61 +7,106 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background: #cc687a;
+    background: #fff;
 }
 
 .UserDialog {
-    width: 50%;
-    height: 75%;
-    border: 1px solid;
-    border-radius: 4px;
-    min-width: 20em;
+    width: 50vw;
+    height: 75vh;
+    border-radius: 5px;
     background: white;
-    box-shadow: 0 0 12em hsla(0, 0%, 0%, 0.2);
-}
-
-.UserDialog .signInOrSignUp > nav:first-child {
-    padding: 1em;
-    margin-left: -2em;
-}
-
-.UserDialog .signInOrSignUp > nav:first-child label {
-    margin-left: 2em;
-    cursor: pointer;
-}
-
-.UserDialog .signInOrSignUp > .panes {
-    padding: 0 1em 1em;
-}
-
-.UserDialog .forgotPassword > h3 {
-padding: 1em;
-}
-
-.UserDialog .forgotPassword >form{
-    padding: 0 1em 1em;
-}
-
-.UserDialog form > .row {
+    box-shadow: 0 0 12em hsla(0, 0%, 0%, 0.35);
+    overflow: hidden;
     display: flex;
-    padding: .3em 0;
 }
 
-.UserDialog form > .row > label:first-child {
-    width: 4em;
+.UserPanes {
+    flex: 1;
 }
 
-.UserDialog form > .row.actions {
-    padding-left: 4em;
-    display: flex;
-    align-items: center;
+.cover {
+    flex: 1;
+    background: #6bdec9;
 }
 
-.UserDialog form > .row.actions button {
-    margin-right: .5em;
+.UserDialog .signInOrSignUp{
+    border: 1px solid #000;
+    height:100%;
+    padding: 50% 20%;
+    background: #35475e;
+    color: #969ea8;
+    font-weight: 100;
 }
 
-.UserDialog button {
-    font: inherit;
-    padding: .2em;
+.UserDialog .signInOrSignUp input[type='radio']{
+    display: none;
 }
+
+.UserDialog .signInOrSignUp nav{
+    margin-bottom: 2em;
+}
+.UserDialog .signInOrSignUp nav>label{
+    font-size: 24px;
+}
+.UserDialog .signInOrSignUp nav >span{
+    margin: 0 5%;
+}
+.UserDialog .signInOrSignUp .RadioActive{
+    border-bottom: 1px solid #18ad90;
+    color: #fff;
+}
+
+.row >label{
+    display: block;
+}
+
+
+
+
+
+
+/*.UserDialog .signInOrSignUp > nav:first-child {*/
+    /*padding: 1em;*/
+    /*margin-left: -2em;*/
+/*}*/
+
+/*.UserDialog .signInOrSignUp > nav:first-child label {*/
+    /*margin-left: 2em;*/
+    /*cursor: pointer;*/
+/*}*/
+
+/*.UserDialog .signInOrSignUp > .panes {*/
+    /*padding: 0 1em 1em;*/
+/*}*/
+
+/*.UserDialog .forgotPassword > h3 {*/
+    /*padding: 1em;*/
+/*}*/
+
+/*.UserDialog .forgotPassword > form {*/
+    /*padding: 0 1em 1em;*/
+/*}*/
+
+/*.UserDialog form > .row {*/
+    /*display: flex;*/
+    /*padding: .3em 0;*/
+/*}*/
+
+/*.UserDialog form > .row > label:first-child {*/
+    /*width: 4em;*/
+/*}*/
+
+/*.UserDialog form > .row.actions {*/
+    /*padding-left: 4em;*/
+    /*display: flex;*/
+    /*align-items: center;*/
+/*}*/
+
+/*.UserDialog form > .row.actions button {*/
+    /*margin-right: .5em;*/
+/*}*/
+
+/*.UserDialog button {*/
+    /*font: inherit;*/
+    /*padding: .2em;*/
+/*}*/
