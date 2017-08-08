@@ -11,18 +11,22 @@
 }
 
 .UserDialog {
-    width: 50vw;
+    width: 960px;
     height: 75vh;
     border-radius: 5px;
-    background: white;
     box-shadow: 0 0 12em hsla(0, 0%, 0%, 0.35);
     overflow: hidden;
     display: flex;
+    background: #35475e;
+
 }
 
 .UserPanes {
     flex: 1;
     box-shadow: -8px 0 4em hsla(0, 0%, 0%, 0.45);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .cover {
@@ -32,9 +36,7 @@
 
 .UserDialog .signInOrSignUp ,
 .UserDialog .forgotPassword{
-    height: 100%;
-    padding: 40% 20%;
-    background: #35475e;
+    min-width: 288px;
     color: #969ea8;
     font-weight: 100;
 }
@@ -63,7 +65,6 @@
 /*forgotPassword*/
 
 .UserDialog .forgotPassword{
-    padding:50% 20%;
 }
 .forgotPassword h3{
     font-size: 24px;
