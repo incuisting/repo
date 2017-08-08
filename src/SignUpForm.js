@@ -8,18 +8,21 @@ export default function (props) {
             <div className="row">
                 <label>邮箱</label>
                 <input type="text" value={props.formData.email}
+                       placeholder="Your e-mail goes here"
                        onChange={props.onChange.bind(null, 'email')}
                 />
             </div>
             <div className="row">
                 <label>用户名</label>
                 <input type="text" value={props.formData.username}
+                       placeholder="Enter your username"
                        onChange={props.onChange.bind(null, 'username')}
                 />
             </div>
             <div className="row">
                 <label>密码</label>
                 <input type="password" value={props.formData.password}
+                       placeholder="Enter your password"
                        onChange={props.onChange.bind(null, 'password')}
                 />
             </div>

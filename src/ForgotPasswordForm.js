@@ -7,10 +7,11 @@ export default function (props) {
             <h3>
                 重置密码
             </h3>
-            <form className="forgotPassword" onSubmit={props.onSubmit}>
+            <form  onSubmit={props.onSubmit}>
                 <div className="row">
                     <label>邮箱</label>
                     <input type="text" value={props.formData.email}
+                           placeholder="Enter your e-mail"
                            onChange={props.onChange.bind(null, 'email')}
                     />
                 </div>

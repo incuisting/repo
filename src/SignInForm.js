@@ -7,11 +7,13 @@ export default function (props) {
             <div className="row">
                 <label>用户名</label>
                 <input type="text" value={props.formData.username}
+                       placeholder="Enter your username"
                        onChange={props.onChange.bind(null, 'username')}/>
             </div>
             <div className="row">
                 <label>密码</label>
                 <input type="password" value={props.formData.password}
+                       placeholder="Your password"
                        onChange={props.onChange.bind(null, 'password')}
                 />
             </div>
