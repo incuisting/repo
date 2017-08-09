@@ -48,9 +48,9 @@ class App extends Component {
                     <div>1231231231231111111111111111111111111111111111111111111111</div>
                 </div>
                 <div className="Todo">
-                    <h1>{this.state.user.username || '我'}的待办
-                        {this.state.user.id ? <button onClick={this.signOut.bind(this)}>登出</button> : null}
-                    </h1>
+                    <div className="logOut">
+                        {this.state.user.id ? <button onClick={this.signOut.bind(this)}>LogOut</button> : null}
+                    </div>
                     <div className="inputWrapper">
                         <TodoInput content={this.state.newTodo}
                                    onChange={this.changeTitle.bind(this)}

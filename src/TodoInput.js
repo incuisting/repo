@@ -20,6 +20,7 @@ export default function (props) {
 
     return (
         <input type="text" className="TodoInput" value={props.content}
+               placeholder="YOUR TASKS"
                onChange={changeTitle.bind(null, props)}
                onKeyPress={submit.bind(null, props)}/>
     )

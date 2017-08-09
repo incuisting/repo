@@ -1,0 +1,12 @@
+.TodoInput{
+    width: 100%;
+    background: transparent;
+    border: none;
+    border-bottom:1px solid #fff;
+    outline: none;
+    color: #ffffff;
+    padding: 0 0 8px 0;
+}
+input::placeholder{
+    color: rgba(255,255,255,0.9);
+}

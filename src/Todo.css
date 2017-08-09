@@ -1,6 +1,27 @@
 .Todo {
     color: #fff;
-    background: #18ad90;
+    background: #24bd9c;
     min-width: 50%;
     min-height: 70vh;
+    padding: 24px;
+}
+.Todo .logOut{
+    display: flex;
+    justify-content: flex-end;
+    font-size: 16px;
+    font-weight: 100;
+
+}
+.logOut button{
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: #fff;
+}
+.inputWrapper{
+    margin:64px 0 0 0;
+}
+
+.todoList{
+    margin: 32px 0 0 0;
 }
