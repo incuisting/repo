@@ -1,6 +1,7 @@
 .App{
   min-width: 1024px;
   display: flex;
+  overflow: hidden;
 }
 .Date{
   min-width: 50%;

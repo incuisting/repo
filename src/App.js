@@ -7,7 +7,7 @@ import TodoInput from './TodoInput';
 import TodoItem from './TodoItem';
 import UserDialog from './UserDialog';
 import {getCurrentUser, signOut, TodoModel} from './leanCloud';
-
+import DatePicker from './DatePicker'
 //主文件
 class App extends Component {
     constructor(props) {
@@ -45,7 +45,7 @@ class App extends Component {
         return (
             <div className="App">
                 <div className="Date">
-                    <div>1231231231231111111111111111111111111111111111111111111111</div>
+                    <DatePicker/>
                 </div>
                 <div className="Todo">
                     <div className="logOut">
@@ -142,3 +142,8 @@ class App extends Component {
 }
 
 export default App;
+
+/*
+* todo
+* item完成后移到列表最下方，取消移动会最顶部
+* */
