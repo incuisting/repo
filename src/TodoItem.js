@@ -5,7 +5,7 @@ import './TodoItem.css'
 export default class TodoItem extends Component {
     render() {
         return (
-            <div className="TodoItem">
+            <div className={this.props.todo.status === 'completed' ? 'TodoItem itemCompleted' : 'TodoItem'}>
                 <label>
                     <input type="checkbox" checked={this.props.todo.status === 'completed'}
                            onChange={this.toggle.bind(this)}/>
@@ -19,11 +19,10 @@ export default class TodoItem extends Component {
                     }
 
                 </label>
-
                 <span className={this.props.todo.status === 'completed' ? 'isCompleted' : 'title'}>
                 {this.props.todo.title}
                 </span>
-                <label>
+                <label className="itemDelete">
                     <button onClick={this.delete.bind(this)}>删除</button>
                     <svg className="icon">
                         <use xlinkHref="#icon-cuowuguanbiquxiao"></use>

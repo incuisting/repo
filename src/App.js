@@ -98,6 +98,7 @@ class App extends Component {
     toggle(event, todo) {
         let oldStatus = todo.status
         todo.status = todo.status === 'completed' ? '' : 'completed'
+        console.log('toggle',todo)
         TodoModel.update(todo, () => {
             this.setState(this.state)
 
@@ -105,8 +106,12 @@ class App extends Component {
             todo.status = oldStatus
             this.setState(this.state)
         })
+        this.notCompletedItemToTop()
     }
-
+    notCompletedItemToTop(){
+        //将已经完成todo移动到lsit最后
+        console.log(this.state.todoList)
+    }
     //归属todo
     changeTitle(event) {
         this.setState({
