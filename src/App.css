@@ -1,5 +1,6 @@
 .App{
   min-width: 1024px;
+    height: 680px;
   display: flex;
   overflow: hidden;
 }

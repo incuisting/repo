@@ -18,6 +18,7 @@
 .TodoItem .icon{
     width: 32px;
     height:32px;
+    cursor: pointer;
 }
 .TodoItem.itemCompleted{
     opacity: 0.6;

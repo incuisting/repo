@@ -1,8 +1,101 @@
-.DatePicker{
+.DatePicker {
     background: #fff;
     width: 100%;
-    height:100%;
+    height: 100%;
     position: relative;
     z-index: 10;
-    box-shadow: 5px 0 24px rgba(0,0,0,.4);
+    box-shadow: 5px 0 24px rgba(0, 0, 0, .4);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.DatePicker .date {
+    color: #808080;
+}
+
+/*panel*/
+.date .panel {
+    text-align: center;
+    flex-grow: 1;
+    width: 100%;
+    height: 400px;
+    padding: 0 4px;
+}
+
+.date .panel th {
+    line-height: 2;
+    font-weight: 100;
+}
+
+.date .panel td {
+    line-height: 1.2;
+    font-weight: 100;
+}
+
+.date .panel td:hover{
+    background:  #1fb99d;
+    color: #fff;
+}
+
+.date .pre-month,
+.date .next-month {
+    color: #eee;
+}
+.date .panel .selected-date{
+    border: 3px solid #1fb99d;
+}
+
+.date .cur-date {
+    color: #fff;
+    background:  #1fb99d;
+}
+
+/*footer*/
+.DatePicker .footer {
+    height: 10%;
+    background: #18ad90;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.DatePicker .cur {
+    flex-grow: 1;
+    text-align: center;
+    color: #ffffff;
+    font-size: 24px;
+    font-weight: 100;
+}
+
+.DatePicker .footer .icon {
+    width: 32px;
+    height: 32px;
+    fill: #fff;
+}
+
+.DatePicker .footer .caret-left {
+    display: block;
+    margin-left: 24px;
+    margin-top: 6px;
+    cursor: pointer;
+}
+
+.DatePicker .footer .caret-right {
+    display: block;
+    margin-right: 24px;
+    margin-top: 6px;
+    cursor: pointer;
+}
+
+/*header*/
+.DatePicker .header {
+    height: 10%;
+}
+
+.DatePicker .header .icon {
+    fill: #1fb99d;
+    width: 32px;
+    height: 32px;
+    margin: 24px 0 24px 24px;
 }
