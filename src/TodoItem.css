@@ -1,0 +1,21 @@
+.TodoItem{
+    display: flex;
+    align-items: center;
+    padding-top: 32px;
+}
+.TodoItem>.title,
+.TodoItem>.isCompleted{
+    flex-grow: 1;
+    padding: 0 16px;
+    font-size: 40px;
+}
+
+.TodoItem input,
+.TodoItem button{
+    display: none;
+}
+
+.TodoItem .icon{
+    width: 40px;
+    height:40px;
+}
