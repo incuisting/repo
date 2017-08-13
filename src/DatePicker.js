@@ -1,5 +1,6 @@
 import React from 'react'
 import './DatePicker.css'
+import Calendar from './Calendar'
 
 export default class DatePicker extends React.Component {
     constructor(props) {
@@ -54,8 +55,7 @@ export default class DatePicker extends React.Component {
                             <th>六</th>
                         </tr>
                         </thead>
-                        <tbody>
-
+                        <tbody  dangerouslySetInnerHTML={{__html: tpl}}>
                         </tbody>
                     </table>
                 </div>
