@@ -2,7 +2,33 @@ import React from 'react'
 import './DatePicker.css'
 
 export default class DatePicker extends React.Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            dateArr: [],
+            date:new Date()
+
+        }
+    }
+
     render() {
+        // this.setData();
+        let footer = (
+            <div className="footer">
+                    <span className="pre caret-left">
+                        <svg className="icon">
+                            <use xlinkHref="#icon-return"></use>
+                        </svg>
+                    </span>
+                <span className="cur">{this.state.date.getFullYear()+'年'+(this.state.date.getMonth()+1)+'月'}</span>
+                <span className="next caret-right">
+                        <svg className="icon">
+                            <use xlinkHref="#icon-enter"></use>
+                        </svg>
+                    </span>
+            </div>
+
+        )
         return (
             <div className="DatePicker">
                 <div className="header">
@@ -75,20 +101,82 @@ export default class DatePicker extends React.Component {
                         </tbody>
                     </table>
                 </div>
-                <div className="footer">
-                    <span className="pre caret-left">
-                        <svg className="icon">
-                            <use xlinkHref="#icon-return"></use>
-                        </svg>
-                    </span>
-                    <span className="cur">2016年7月</span>
-                    <span className="next caret-right">
-                        <svg className="icon">
-                            <use xlinkHref="#icon-enter"></use>
-                        </svg>
-                    </span>
-                </div>
+                {footer}
             </div>
         )
+    }
+
+    setData() {
+
+        let firstDay = this.getFirstDay(this.state.date),
+            lastDay = this.getLastDay(this.state.date);
+
+        let dateArr = this.state.dateArr;
+
+        for (let i = firstDay.getDay(); i > 0; i--) {
+            let d = new Date(firstDay.getTime() - i * 24 * 60 * 60 * 1000);
+            dateArr.push({type: 'pre', date: d});
+        }
+
+        for (let j = 0; j < lastDay.getDate() - firstDay.getDate() + 1; j++) {
+            let d = new Date(firstDay.getTime() + j * 24 * 60 * 60 * 1000);
+            dateArr.push({type: 'cur', date: d});
+        }
+
+        for (let k = 1; k < 7 - lastDay.getDay(); k++) {
+            let d = new Date(lastDay.getTime() + k * 24 * 60 * 60 * 1000);
+            dateArr.push({type: 'next', date: d})
+        }
+    }
+
+
+    //获取 date 所在月份的第一天的时间对象
+    getFirstDay(date) {
+        let year = date.getFullYear(),
+            month = date.getMonth();
+        console.log('date',year)
+        console.log('date',month)
+        return new Date(year, month, 1);
+    }
+
+    //获取 date 所在月份最后一天的时间对象
+    getLastDay(date) {
+        let year = date.getFullYear(),
+            month = date.getMonth();
+        month++;
+
+        if (month > 11) {
+            month = 0;
+            year++;
+        }
+        let newDate = new Date(year, month, 1);
+        return new Date(newDate.getTime() - 1000 * 60 * 60 * 24);
+    }
+
+    //获取date 上月1号时间对象
+    getPreMonth(date) {
+        let year = date.getFullYear(),
+            month = date.getMonth();
+
+        month--;
+        if (month < 0) {
+            month = 11;
+            year--;
+        }
+        return new Date(year, month, 1);
+    }
+
+    //获取date 下月1号时间对象
+
+    getNextMonth(date) {
+        let year = date.getFullYear(),
+            month = date.getMonth();
+
+        month++;
+        if (month > 11) {
+            month = 0;
+            year++;
+        }
+        return new Date(year, month, 1);
     }
 }
