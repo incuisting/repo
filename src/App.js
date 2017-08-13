@@ -2,12 +2,12 @@ import React, {Component} from 'react';
 import 'normalize.css';
 import './reset.css';
 import './App.css';
-import './Todo.css';
-import TodoInput from './TodoInput';
-import TodoItem from './TodoItem';
+// import './Todo.css';
+
 import UserDialog from './UserDialog';
 import {getCurrentUser, signOut, TodoModel} from './leanCloud';
 import DatePicker from './DatePicker'
+import Todo from './Todo'
 //主文件
 class App extends Component {
     constructor(props) {
@@ -30,41 +30,30 @@ class App extends Component {
     }
 
     render() {
-        let todos = this.state.todoList
-            .filter((item) => !item.deleted)
-            .map((item, index) => {
-                return (
-                    <li key={item.id}>
-                        <TodoItem todo={item} onToggle={this.toggle.bind(this)}
-                                  onDelete={this.delete.bind(this)}
-                        />
-                    </li>
-                )
-            })
 
         return (
             <div className="App">
                 <div className="Date">
-                    <DatePicker/>
+                    {this.state.user.id?
+                        <DatePicker/>:
+                        null
+                    }
                 </div>
-                <div className="Todo">
-                    <div className="logOut">
-                        {this.state.user.id ? <button onClick={this.signOut.bind(this)}>LogOut</button> : null}
-                    </div>
-                    <div className="inputWrapper">
-                        <TodoInput content={this.state.newTodo}
-                                   onChange={this.changeTitle.bind(this)}
-                                   onSubmit={this.addTodo.bind(this)}/>
-                    </div>
-                    <ol className="todoList">
-                        {todos}
-                    </ol>
-                    {this.state.user.id ?
-                        null :
-                        <UserDialog
-                            onSignUp={this.onSignUpOrSignIn.bind(this)}
-                            onSignIn={this.onSignUpOrSignIn.bind(this)}/>}
-                </div>
+                <Todo todoList={this.state.todoList}
+                      user={this.state.user}
+                      newTodo={this.state.newTodo}
+                      changeTitle={this.changeTitle.bind(this)}
+                      addTodo={this.addTodo.bind(this)}
+                      signOut = {this.signOut.bind(this)}
+                      toggle = {this.toggle.bind(this)}
+                      delete = {this.delete.bind(this)}
+
+                />
+                {this.state.user.id ?
+                    null :
+                    <UserDialog
+                        onSignUp={this.onSignUpOrSignIn.bind(this)}
+                        onSignIn={this.onSignUpOrSignIn.bind(this)}/>}
             </div>
         )
     }
