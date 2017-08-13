@@ -6,13 +6,14 @@ export default class DatePicker extends React.Component {
         super(props)
         this.state = {
             dateArr: [],
-            date:new Date()
+            date: new Date()
 
         }
     }
 
     render() {
-        // this.setData();
+        let tpl =this.setTbody()
+        console.log('tpl',typeof tpl)
         let footer = (
             <div className="footer">
                     <span className="pre caret-left">
@@ -20,7 +21,8 @@ export default class DatePicker extends React.Component {
                             <use xlinkHref="#icon-return"></use>
                         </svg>
                     </span>
-                <span className="cur">{this.state.date.getFullYear()+'年'+(this.state.date.getMonth()+1)+'月'}</span>
+                <span
+                    className="cur">{this.state.date.getFullYear() + '年' + (this.state.date.getMonth() + 1) + '月'}</span>
                 <span className="next caret-right">
                         <svg className="icon">
                             <use xlinkHref="#icon-enter"></use>
@@ -53,51 +55,7 @@ export default class DatePicker extends React.Component {
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <td className="pre-month">28</td>
-                            <td className="pre-month">29</td>
-                            <td className="pre-month">30</td>
-                            <td className="pre-month">31</td>
-                            <td className="cur-month cur-date">1</td>
-                            <td className="cur-month">2</td>
-                            <td className="cur-month">3</td>
-                        </tr>
-                        <tr>
-                            <td className="cur-month">4</td>
-                            <td className="cur-month">5</td>
-                            <td className="cur-month">6</td>
-                            <td className="cur-month">7</td>
-                            <td className="cur-month">8</td>
-                            <td className="cur-month">9</td>
-                            <td className="cur-month">10</td>
-                        </tr>
-                        <tr>
-                            <td className="cur-month">11</td>
-                            <td className="cur-month">12</td>
-                            <td className="cur-month">13</td>
-                            <td className="cur-month">14</td>
-                            <td className="cur-month">15</td>
-                            <td className="cur-month">16</td>
-                            <td className="cur-month">17</td>
-                        </tr>
-                        <tr>
-                            <td className="cur-month">18</td>
-                            <td className="cur-month">19</td>
-                            <td className="cur-month">20</td>
-                            <td className="cur-month">21</td>
-                            <td className="cur-month">22</td>
-                            <td className="cur-month">23</td>
-                            <td className="cur-month">24</td>
-                        </tr>
-                        <tr>
-                            <td className="cur-month selected-date">25</td>
-                            <td className="cur-month">26</td>
-                            <td className="cur-month">27</td>
-                            <td className="cur-month">28</td>
-                            <td className="cur-month">29</td>
-                            <td className="cur-month">30</td>
-                            <td className="next-month">01</td>
-                        </tr>
+
                         </tbody>
                     </table>
                 </div>
@@ -106,12 +64,13 @@ export default class DatePicker extends React.Component {
         )
     }
 
-    setData() {
+    //设置日期数组
+    setDateArr() {
 
         let firstDay = this.getFirstDay(this.state.date),
             lastDay = this.getLastDay(this.state.date);
-
-        let dateArr = this.state.dateArr;
+debugger
+        let dateArr = [];
 
         for (let i = firstDay.getDay(); i > 0; i--) {
             let d = new Date(firstDay.getTime() - i * 24 * 60 * 60 * 1000);
@@ -127,15 +86,52 @@ export default class DatePicker extends React.Component {
             let d = new Date(lastDay.getTime() + k * 24 * 60 * 60 * 1000);
             dateArr.push({type: 'next', date: d})
         }
+
+        return dateArr;
     }
 
+
+    setTbody() {
+        let tpl = '',
+            dateArr = this.setDateArr();
+        console.log('dateArr', dateArr)
+        for (let i = 0; i < dateArr.length; i++) {
+            if (i % 7 === 0) {
+                tpl = tpl + '<tr>' ;
+            }
+            tpl += '<td className="';
+
+            if (dateArr[i].type === 'pre') {
+                tpl += 'pre-month';
+            } else if (dateArr[i].type === 'cur') {
+                tpl += 'cur-month';
+            } else {
+                tpl += 'next-month'
+            }
+
+            if (this.getYYMMDD(this.state.date) === this.getYYMMDD(dateArr[i].date)) {
+                tpl += ' cur-date';
+            }
+            tpl += '"';
+
+            tpl += ' data-date="' + this.getYYMMDD(dateArr[i].date) + '">';
+            tpl += ( dateArr[i].date.getDate()) + '</td>';
+
+
+            if (i % 7 === 6) {
+                tpl = tpl + '</tr>'
+            }
+        }
+        return tpl;
+
+    }
 
     //获取 date 所在月份的第一天的时间对象
     getFirstDay(date) {
         let year = date.getFullYear(),
             month = date.getMonth();
-        console.log('date',year)
-        console.log('date',month)
+        console.log('date', year);
+        console.log('date', month);
         return new Date(year, month, 1);
     }
 
@@ -178,5 +174,11 @@ export default class DatePicker extends React.Component {
             year++;
         }
         return new Date(year, month, 1);
+    }
+
+    getYYMMDD(date) {
+        let yy = date.getFullYear(),
+            mm = date.getMonth() + 1;
+        return date.getFullYear() + "/" + (date.getMonth() + 1) + "/" + date.getDate()
     }
 }
