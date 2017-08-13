@@ -13,7 +13,7 @@ class CalendarBody extends React.Component{
 
         let isToday = function(){
 
-            if(toDay.ymd == day.ymd){
+            if(toDay.ymd === day.ymd){
                 return true;
             }else{
                 return false;
@@ -27,7 +27,7 @@ class CalendarBody extends React.Component{
         })
 
         return(
-            <li className={dayClass} key={key} data-yyyy={day.yyyy} data-mm={day.mm} data-dd={day.dd} data-day={day.day} data-ymd={day.ymd}>{day.dd}</li>
+            <td className={dayClass} key={key} data-yyyy={day.yyyy} data-mm={day.mm} data-dd={day.dd} data-day={day.day} data-ymd={day.ymd}>{day.dd}</td>
         )
     }
     renderWeek(week, key){ // 渲染每一周
@@ -35,9 +35,9 @@ class CalendarBody extends React.Component{
         let day = week.map(this.renderDay.bind(this))
 
         return(
-            <ul key={key} className="day-list">
+            <tr key={key} className="day-list">
                 {day}
-            </ul>
+            </tr>
         )
     }
     render(){
@@ -46,9 +46,9 @@ class CalendarBody extends React.Component{
         let week = weeksArray.map(this.renderWeek.bind(this))
 
         return(
-            <div>
+            <tbody>
                 {week}
-            </div>
+            </tbody>
         )
     }
 

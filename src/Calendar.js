@@ -1,7 +1,7 @@
 import React from 'react';
 import moment from 'moment';
 
-import CalendarBody from './CalendarBody.jsx';
+import CalendarBody from './CalendarBody.js';
 
 class Calendar extends React.Component{
     constructor(props){
@@ -18,11 +18,11 @@ class Calendar extends React.Component{
         this.createMonthArray();
     }
     getNowDate(){ // 获取当前时间，并更新state
-        var toDay = this.state.toDay;
+        let toDay = this.state.toDay;
 
-        var year = moment().year();
-        var month = moment().month();
-        var date = moment().date();
+        let year = moment().year();
+        let month = moment().month();
+        let date = moment().date();
 
         toDay.yyyy = year;
         toDay.mm = month;
@@ -89,11 +89,11 @@ class Calendar extends React.Component{
 
     }
     handlePreMonth(){ // 选择上一个月
-        var toDay = this.state.toDay;
-        var _year = toDay.yyyy;
-        var _month = toDay.mm;
+        let toDay = this.state.toDay;
+        let _year = toDay.yyyy;
+        let _month = toDay.mm;
 
-        if(_month == 0){
+        if(_month === 0){
             _year -= 1;
             _month = 11;
         }else{
@@ -108,11 +108,11 @@ class Calendar extends React.Component{
         this.createMonthArray()
     }
     handleNextMonth(){ // 选择下一个月
-        var toDay = this.state.toDay;
-        var _year = toDay.yyyy;
-        var _month = toDay.mm;
+        let toDay = this.state.toDay;
+        let _year = toDay.yyyy;
+        let _month = toDay.mm;
 
-        if(_month == 11){
+        if(_month === 11){
             _year += 1;
             _month = 0;
         }else{
@@ -127,28 +127,36 @@ class Calendar extends React.Component{
         this.createMonthArray()
     }
     render(){
-        var toDay = this.state.toDay;
+        let toDay = this.state.toDay;
         return(
             <div className="ui-calendar">
-                <div className="header">
-                    <span className="arrow-left" onClick={this.handlePreMonth.bind(this)}>&lt;</span>
-                    <p className="date">
-                        <span className="month">{toDay.mmEn}</span>
-                        <span className="year">{toDay.yyyy}</span>
-                    </p>
-                    <span className="arrow-right" onClick={this.handleNextMonth.bind(this)}>&gt;</span>
-                </div>
-                <div className="body">
-                    <ul className="week-list">
-                        <li className="week-item">日</li>
-                        <li className="week-item">一</li>
-                        <li className="week-item">二</li>
-                        <li className="week-item">三</li>
-                        <li className="week-item">四</li>
-                        <li className="week-item">五</li>
-                        <li className="week-item">六</li>
-                    </ul>
+                <table className="panel">
+                    <thead >
+                        <tr>
+                            <th className="week-item">日</th>
+                            <th className="week-item">一</th>
+                            <th className="week-item">二</th>
+                            <th className="week-item">三</th>
+                            <th className="week-item">四</th>
+                            <th className="week-item">五</th>
+                            <th className="week-item">六</th>
+                        </tr>
+                    </thead>
                     <CalendarBody calendarState={this.state}/>
+                </table>
+                <div className="footer">
+                    <span className="pre caret-left" onClick={this.handlePreMonth.bind(this)}>
+                        <svg className="icon">
+                            <use xlinkHref="#icon-return"></use>
+                        </svg>
+                    </span>
+                    <span
+                        className="cur">{toDay.mmEn}{toDay.yyyy}</span>
+                    <span className="next caret-right" onClick={this.handleNextMonth.bind(this)}>
+                        <svg className="icon">
+                            <use xlinkHref="#icon-enter"></use>
+                        </svg>
+                    </span>
                 </div>
             </div>
         )
