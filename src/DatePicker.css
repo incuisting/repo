@@ -9,7 +9,81 @@
     flex-direction: column;
     justify-content: space-between;
 }
+.DatePicker .ui-calendar{
+    flex-grow: 1;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex-direction: column;
+}
+/*date*/
+.ui-calendar .date{
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.ui-calendar .date .panel {
+    text-align:  center;
+    border-spacing: 20px;
+}
+.date .panel th{
+    width: 60px;
+    height:70px;
+    line-height: 2;
+    font-weight: 100;
+}
+.date .panel td {
+    font-weight: 100;
+    width: 50px;
+    height:50px;
+    border-radius: 50%;
+    cursor: pointer;
+}
 
+.date .panel td:hover{
+    background:  #1fb99d;
+    color: #fff;
+}
+.date .now {
+    color: #fff;
+    background:  #1fb99d;
+}
+
+/*footer*/
+.ui-calendar .footer{
+    width: 100%;
+    height:64px;
+    background: #18ad90;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.ui-calendar .footer .cur{
+    flex-grow: 1;
+    text-align: center;
+    color: #ffffff;
+    font-size: 24px;
+    font-weight: 100;
+}
+.ui-calendar .footer .icon {
+    width: 32px;
+    height: 32px;
+    fill: #fff;
+}
+.ui-calendar .footer .caret-left,
+.ui-calendar .footer .caret-right{
+    display: block;
+    margin-top: 6px;
+    cursor: pointer;
+}
+.ui-calendar .footer .caret-left{
+    margin-left: 24px;
+}
+
+.ui-calendar .footer .caret-right{
+    margin-right: 24px;
+}
 /*header*/
 .DatePicker .header {
     height: 10%;

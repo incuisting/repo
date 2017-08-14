@@ -130,8 +130,9 @@ class Calendar extends React.Component{
         let toDay = this.state.toDay;
         return(
             <div className="ui-calendar">
-                <table className="panel">
-                    <thead >
+                <div className="date">
+                    <table className="panel">
+                        <thead >
                         <tr>
                             <th className="week-item">日</th>
                             <th className="week-item">一</th>
@@ -141,9 +142,10 @@ class Calendar extends React.Component{
                             <th className="week-item">五</th>
                             <th className="week-item">六</th>
                         </tr>
-                    </thead>
-                    <CalendarBody calendarState={this.state}/>
-                </table>
+                        </thead>
+                        <CalendarBody calendarState={this.state}/>
+                    </table>
+                </div>
                 <div className="footer">
                     <span className="pre caret-left" onClick={this.handlePreMonth.bind(this)}>
                         <svg className="icon">

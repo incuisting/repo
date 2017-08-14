@@ -20,3 +20,28 @@
 .inputWrapper{
     margin:64px 0 0 0;
 }
+.todoList{
+    height: 478px;
+    overflow: auto;
+}
+/*自定义了滚动条的样式*/
+.todoList::-webkit-scrollbar {
+    width:5px;
+    height:5px;
+}
+.todoList::-webkit-scrollbar-button    {
+    display: none;
+}
+.todoList::-webkit-scrollbar-track     {
+    background:transparent;
+}
+.todoList::-webkit-scrollbar-track-piece {
+    background:transparent;
+}
+.todoList::-webkit-scrollbar-thumb{
+    background:rgba(255,255,255,0.8);
+    border-radius:4px;
+}
+.todoList::-webkit-scrollbar-corner {
+    display: none;
+}
