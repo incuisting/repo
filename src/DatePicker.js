@@ -5,8 +5,6 @@ import Calendar from './Calendar'
 export default class DatePicker extends React.Component {
     constructor(props) {
         super(props)
-        this.state = {
-        }
     }
 
     render() {
@@ -20,7 +18,9 @@ export default class DatePicker extends React.Component {
                     </a>
 
                 </div>
-                <Calendar/>
+                <Calendar selectedDay={this.props.selectedDay}
+                          currentDay = {this.props.currentDay}
+                />
             </div>
         )
     }

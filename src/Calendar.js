@@ -149,7 +149,10 @@ class Calendar extends React.Component {
                             <th className="week-item">六</th>
                         </tr>
                         </thead>
-                        <CalendarBody calendarState={this.state}/>
+                        <CalendarBody calendarState={this.state}
+                                      selectedDay={this.props.selectedDay}
+                                      currentDay = {this.props.currentDay}
+                        />
                     </table>
                 </div>
                 <div className="footer">

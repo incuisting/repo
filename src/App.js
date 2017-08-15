@@ -15,7 +15,8 @@ class App extends Component {
         this.state = {
             user: getCurrentUser() || {},
             newTodo: '',
-            todoList: []
+            todoList: [],
+            currentDay:''
         }
 
         //从leancloud获取用户信息
@@ -35,7 +36,9 @@ class App extends Component {
             <div className="App">
                 <div className="Date">
                     {this.state.user.id?
-                        <DatePicker/>:
+                        <DatePicker selectedDay={this.selectedDay.bind(this)}
+                                    currentDay ={this.state.currentDay}
+                        />:
                         null
                     }
                 </div>
@@ -56,6 +59,14 @@ class App extends Component {
                         onSignIn={this.onSignUpOrSignIn.bind(this)}/>}
             </div>
         )
+    }
+
+    selectedDay(day){
+        this.setState({
+            currentDay:day
+        });
+        console.log(day)
+
     }
 
     //归属todo
