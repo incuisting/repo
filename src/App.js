@@ -125,7 +125,8 @@ class App extends Component {
         let newTodo = {
             title: event.target.value,
             status: '',
-            deleted: false
+            deleted: false,
+            date:this.state.currentDay
         }
         TodoModel.create(newTodo, (id) => {
             console.log('id', id)

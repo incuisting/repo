@@ -25,12 +25,13 @@ export const TodoModel = {
             errorFn && errorFn.call(null, error)
         })
     },
-    create({status, title, deleted}, successFn, errorFn) {
+    create({status, title, deleted,date}, successFn, errorFn) {
         let Todo = AV.Object.extend('Todo')
         let todo = new Todo()
         todo.set('title', title)
         todo.set('status', status)
         todo.set('deleted', deleted)
+        todo.set('date',date)
 
         //设置用户的ACL 权限，防止读取全部数据
 
@@ -47,11 +48,13 @@ export const TodoModel = {
             errorFn && errorFn.call(null, error)
         })
     },
-    update({id, title, status, deleted}, successFn, errorFn) {
+    update({id, title, status, deleted,date}, successFn, errorFn) {
         let todo = AV.Object.createWithoutData('Todo', id)
         title !== undefined && todo.set('title', title)
         status !== undefined && todo.set('status', status)
         deleted !== undefined && todo.set('deleted', deleted)
+        date !== undefined && todo.set('date', date)
+
         // 为什么我要像上面那样写代码？
         // 考虑如下场景
         // update({id:1, title:'hi'})

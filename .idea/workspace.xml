@@ -3,9 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="dcea100b-2989-4fda-a453-ff89d4d9f32c" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/App.js" afterPath="$PROJECT_DIR$/src/App.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Calendar.js" afterPath="$PROJECT_DIR$/src/Calendar.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/CalendarBody.js" afterPath="$PROJECT_DIR$/src/CalendarBody.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/DatePicker.js" afterPath="$PROJECT_DIR$/src/DatePicker.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/leanCloud.js" afterPath="$PROJECT_DIR$/src/leanCloud.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -19,11 +17,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="App.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="App.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/App.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1512">
-              <caret line="39" column="70" lean-forward="false" selection-start-line="39" selection-start-column="70" selection-end-line="39" selection-end-column="70" />
+            <state relative-caret-position="465">
+              <caret line="128" column="38" lean-forward="false" selection-start-line="128" selection-start-column="38" selection-end-line="128" selection-end-column="38" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
                 <element signature="e#131#169#0" expanded="true" />
@@ -32,11 +30,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="leanCloud.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="leanCloud.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/leanCloud.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-231">
-              <caret line="10" column="32" lean-forward="true" selection-start-line="10" selection-start-column="32" selection-end-line="10" selection-end-column="32" />
+            <state relative-caret-position="-207">
+              <caret line="55" column="51" lean-forward="false" selection-start-line="55" selection-start-column="51" selection-end-line="55" selection-end-column="51" />
               <folding />
             </state>
           </provider>
@@ -149,7 +147,6 @@
         <option value="$PROJECT_DIR$/src/index.css" />
         <option value="$PROJECT_DIR$/src/localStorage.js" />
         <option value="$PROJECT_DIR$/src/index.js" />
-        <option value="$PROJECT_DIR$/src/leanCloud.js" />
         <option value="$PROJECT_DIR$/src/UserDialog.js" />
         <option value="$PROJECT_DIR$/src/reset.css" />
         <option value="$PROJECT_DIR$/src/SignInOrSignUp.js" />
@@ -168,10 +165,11 @@
         <option value="$PROJECT_DIR$/src/Todo.js" />
         <option value="$PROJECT_DIR$/src/Todo.css" />
         <option value="$PROJECT_DIR$/src/DatePicker.css" />
-        <option value="$PROJECT_DIR$/src/App.js" />
         <option value="$PROJECT_DIR$/src/DatePicker.js" />
         <option value="$PROJECT_DIR$/src/Calendar.js" />
         <option value="$PROJECT_DIR$/src/CalendarBody.js" />
+        <option value="$PROJECT_DIR$/src/App.js" />
+        <option value="$PROJECT_DIR$/src/leanCloud.js" />
       </list>
     </option>
   </component>
@@ -291,12 +289,12 @@
       <workItem from="1502589467800" duration="15631000" />
       <workItem from="1502626267059" duration="6017000" />
       <workItem from="1502718363948" duration="3816000" />
-      <workItem from="1502798884969" duration="5700000" />
+      <workItem from="1502798884969" duration="6519000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="140518000" />
+    <option name="totallyTimeSpent" value="141337000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="427" y="109" width="1315" height="883" extended-state="0" />
@@ -682,22 +680,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/leanCloud.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-231">
-          <caret line="10" column="32" lean-forward="true" selection-start-line="10" selection-start-column="32" selection-end-line="10" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/App.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1512">
-          <caret line="39" column="70" lean-forward="false" selection-start-line="39" selection-start-column="70" selection-end-line="39" selection-end-column="70" />
+        <state relative-caret-position="465">
+          <caret line="128" column="38" lean-forward="false" selection-start-line="128" selection-start-column="38" selection-end-line="128" selection-end-column="38" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
             <element signature="e#131#169#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/leanCloud.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-207">
+          <caret line="55" column="51" lean-forward="false" selection-start-line="55" selection-start-column="51" selection-end-line="55" selection-end-column="51" />
+          <folding />
         </state>
       </provider>
     </entry>
