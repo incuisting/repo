@@ -28,8 +28,9 @@ class CalendarBody extends React.Component{
     renderDay(day, key){ // 渲染每一天
         let toDay = this.props.calendarState.toDay;
         let selectedDay = this.props.currentDay;
-        let dateArray=this.filterTodoDate(this.props.todoList);
+        let dateArray=this.props.dateArray;
 
+        console.log('dateArray',dateArray)
         let cx = ReactAddons.classSet;
 
         let isToday = function(){
@@ -50,7 +51,7 @@ class CalendarBody extends React.Component{
         }
 
         let isHaveTodo = function () {
-            if(dateArray.indexOf(day.ymd)>0){
+            if(dateArray.indexOf(day.ymd)>=0){
                 return true
             }else {
                 return false

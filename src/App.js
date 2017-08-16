@@ -27,7 +27,9 @@ class App extends Component {
                 let stateCopy = JSON.parse(JSON.stringify(this.state))
                 stateCopy.todoList = todos
                 this.setState(stateCopy)
+                this.filterTodoDate(this.state.todoList)
                 console.log('从leancloud获取用户信息',this.state)
+
             })
         }
     }
@@ -41,7 +43,7 @@ class App extends Component {
                     {this.state.user.id?
                         <DatePicker selectedDay={this.selectedDay.bind(this)}
                                     currentDay ={this.state.currentDay}
-                                    todoList ={this.state.todoList}
+                                    dateArray ={this.state.dateArray}
                         />:
                         null
                     }
@@ -64,6 +66,21 @@ class App extends Component {
                         onSignIn={this.onSignUpOrSignIn.bind(this)}/>}
             </div>
         )
+    }
+
+    filterTodoDate(todoList){
+        let dateArray=[]
+        todoList.filter((item) => !item.deleted)
+            .forEach((item)=>{
+                if(dateArray.indexOf(item.date)<0){
+                    dateArray.push(item.date)
+                }
+            })
+        this.setState({
+            dateArray:dateArray
+        })
+        // console.log('dateArray',dateArray)
+        // return dateArray
     }
 
     selectedDay(day){
@@ -106,6 +123,7 @@ class App extends Component {
         TodoModel.destroy(todo.id, () => {
             todo.deleted = true
             this.setState(this.state)
+            this.filterTodoDate(this.state.todoList)
         })
     }
 
@@ -150,6 +168,7 @@ class App extends Component {
                 newTodo: '',
                 todoList: this.state.todoList
             })
+            this.filterTodoDate(this.state.todoList)
         }, (error) => {
             console.log(error)
         })
