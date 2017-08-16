@@ -2,12 +2,12 @@ import React, {Component} from 'react';
 import 'normalize.css';
 import './reset.css';
 import './App.css';
-// import './Todo.css';
 
 import UserDialog from './UserDialog';
 import {getCurrentUser, signOut, TodoModel} from './leanCloud';
 import DatePicker from './DatePicker'
 import Todo from './Todo'
+import moment from 'moment'
 //主文件
 class App extends Component {
     constructor(props) {
@@ -29,7 +29,9 @@ class App extends Component {
             })
         }
     }
-
+    componentWillMount(){
+        this.getToday() //在挂载之前就获取今天的日期，以便传递给todo里面
+    }
     render() {
 
         return (
@@ -45,6 +47,7 @@ class App extends Component {
                 <Todo todoList={this.state.todoList}
                       user={this.state.user}
                       newTodo={this.state.newTodo}
+                      currentDay={this.state.currentDay}
                       changeTitle={this.changeTitle.bind(this)}
                       addTodo={this.addTodo.bind(this)}
                       signOut = {this.signOut.bind(this)}
@@ -68,7 +71,12 @@ class App extends Component {
         console.log(day)
 
     }
-
+    getToday(){
+        let today = moment().format('YYYY-MM-DD')
+        this.setState({
+            currentDay:today
+        })
+    }
     //归属todo
     onSignUpOrSignIn(user) {
         let stateCopy = JSON.parse(JSON.stringify(this.state))
