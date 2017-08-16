@@ -46,7 +46,7 @@
     cursor: pointer;
 }
 
-.date .panel td:hover {
+.date .panel .day-item:hover {
     background: #1fb99d;
     color: #fff;
 }

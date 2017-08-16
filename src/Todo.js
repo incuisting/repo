@@ -8,7 +8,6 @@ export default class Todo extends Component{
         super(props)
     }
     render(){
-        console.log(this.props);
         let todos = this.props.todoList
             .filter((item) => !item.deleted)
             .filter((item) => item.date === this.props.currentDay)//选出日期为选中日期的todoItem

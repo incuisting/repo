@@ -5,10 +5,30 @@ class CalendarBody extends React.Component{
 
     constructor(props){
         super(props);
+        this.state={
+        }
     }
+
+
+    filterTodoDate(todoList){
+        let dateArray=[]
+        todoList.filter((item) => !item.deleted)
+            .forEach((item)=>{
+                if(dateArray.indexOf(item.date)<0){
+                    dateArray.push(item.date)
+                }
+            })
+        // this.setState({
+        //     dateArray:dateArray
+        // })
+        // console.log('dateArray',dateArray)
+        return dateArray
+    }
+
     renderDay(day, key){ // 渲染每一天
         let toDay = this.props.calendarState.toDay;
         let selectedDay = this.props.currentDay;
+        let dateArray=this.filterTodoDate(this.props.todoList);
 
         let cx = ReactAddons.classSet;
 
@@ -29,10 +49,25 @@ class CalendarBody extends React.Component{
             }
         }
 
+        let isHaveTodo = function () {
+            if(dateArray.indexOf(day.ymd)>0){
+                return true
+            }else {
+                return false
+            }
+        }
+        let dayItem = function () {
+            if(day===""){
+                return false
+            }else {
+                return true
+            }
+        }
         let dayClass = cx({
             'currentDay':isSelectedDay(),
-            'day-item': true,
-            'now': isToday()
+            'day-item': dayItem(),
+            'now': isToday(),
+            'selected': isHaveTodo()
         })
 
         return(
@@ -50,7 +85,6 @@ class CalendarBody extends React.Component{
         )
     }
     render(){
-
         let weeksArray = this.props.calendarState.weeksArray;
         let week = weeksArray.map(this.renderWeek.bind(this))
 

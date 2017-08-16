@@ -20,6 +20,7 @@ export default class DatePicker extends React.Component {
                 </div>
                 <Calendar selectedDay={this.props.selectedDay}
                           currentDay = {this.props.currentDay}
+                          todoList={this.props.todoList}
                 />
             </div>
         )

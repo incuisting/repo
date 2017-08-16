@@ -16,7 +16,8 @@ class App extends Component {
             user: getCurrentUser() || {},
             newTodo: '',
             todoList: [],
-            currentDay:''
+            currentDay:'',
+            dateArray:[]
         }
 
         //从leancloud获取用户信息
@@ -26,6 +27,7 @@ class App extends Component {
                 let stateCopy = JSON.parse(JSON.stringify(this.state))
                 stateCopy.todoList = todos
                 this.setState(stateCopy)
+                console.log('从leancloud获取用户信息',this.state)
             })
         }
     }
@@ -33,13 +35,13 @@ class App extends Component {
         this.getToday() //在挂载之前就获取今天的日期，以便传递给todo里面
     }
     render() {
-
         return (
             <div className="App">
                 <div className="Date">
                     {this.state.user.id?
                         <DatePicker selectedDay={this.selectedDay.bind(this)}
                                     currentDay ={this.state.currentDay}
+                                    todoList ={this.state.todoList}
                         />:
                         null
                     }
@@ -65,6 +67,11 @@ class App extends Component {
     }
 
     selectedDay(day){
+        console.log('selectedDay',day)
+        let oldCurrentDay = this.state.currentDay
+        if (day===undefined){
+            day=oldCurrentDay
+        }
         this.setState({
             currentDay:day
         });
@@ -118,7 +125,6 @@ class App extends Component {
     }
     notCompletedItemToTop(){
         //将已经完成todo移动到lsit最后
-        console.log(this.state.todoList)
     }
     //归属todo
     changeTitle(event) {

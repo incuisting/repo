@@ -11,15 +11,12 @@ export default AV
 //所有跟 Todo 相关的 LeanCloud 操作都放到这里
 export const TodoModel = {
     getByUser(user, successFn, errorFn) {
-        console.log('user', user)
         let query = new AV.Query('Todo')
         query.equalTo('deleted',false)
         query.find().then((response) => {
-            console.log('response', response)
             let array = response.map((t) => {
                 return {id: t.id, ...t.attributes}
             })
-            console.log('array', array)
             successFn.call(null, array)
         }, (error) => {
             errorFn && errorFn.call(null, error)

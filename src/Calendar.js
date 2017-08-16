@@ -152,6 +152,7 @@ class Calendar extends React.Component {
                         <CalendarBody calendarState={this.state}
                                       selectedDay={this.props.selectedDay}
                                       currentDay = {this.props.currentDay}
+                                      todoList = {this.props.todoList}
                         />
                     </table>
                 </div>
