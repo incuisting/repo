@@ -44,6 +44,8 @@
     height: 50px;
     border-radius: 50%;
     cursor: pointer;
+    border: 3px solid transparent;
+
 }
 
 .date .panel .day-item:hover {
@@ -57,7 +59,7 @@
     background: #1fb99d;
 }
 
-.date .selected {
+.date .panel .selected {
     border: 3px solid #1fb99d;
 }
 
