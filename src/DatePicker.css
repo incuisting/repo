@@ -53,7 +53,10 @@
     color: #fff;
 }
 
-.date .now,
+.date .now{
+    color: #fff;
+    background: #969ea8;
+}
 .date .currentDay{
     color: #fff;
     background: #1fb99d;
