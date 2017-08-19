@@ -1,11 +1,13 @@
 .App{
   min-width: 1024px;
-    height: 680px;
+  height: 680px;
   display: flex;
   overflow: hidden;
+  user-select:none;
 }
 .Date{
   min-width: 50%;
+  height: 100%;
 }
 .icon {
   width: 1em; height: 1em;

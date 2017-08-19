@@ -25,14 +25,25 @@ export default class UserDialog extends Component {
     signUp(e) {
         e.preventDefault()
         let {email, username, password} = this.state.formData
+        let isLeagal = this.checkFormData.call(null,email,username,password)
+        if(!isLeagal){
+            return
+        }
         let success = (user) => {
             this.props.onSignUp.call(null, user)
         }
         let error = (error) => {
             switch (error.code) {
+                case 200:
+                    alert('没有提供用户名，或者用户名为空')
                 case 202:
-                    alert('用户名已被占用')
+                    alert('用户名已被占用，换个试试？')
                     break
+                case 217:
+                    alert('用户名不可以有空格！！！！！')
+                    break
+                case 125:
+                    alert('没有@的邮箱地址就是咸鱼！！')
                 default:
                     alert(error)
                     break
@@ -52,6 +63,12 @@ export default class UserDialog extends Component {
                 case 210:
                     alert('用户名与密码不匹配')
                     break
+                case 211:
+                    alert('用户名打错了')
+                    break
+                case 219:
+                    alert('登录失败次数超过限制，请稍候再试，或者通过忘记密码重设密码')
+                    break
                 default:
                     alert(error)
                     break
@@ -60,7 +77,23 @@ export default class UserDialog extends Component {
         signIn(username, password, success, error)
 
     }
-
+    //检查用户名，密码，邮箱
+    checkFormData(email,username,password){
+        let regEmail = new RegExp("^\\w+@[\\w-]+\\.(com)$")
+        let regUsername = new RegExp("\\w{3,10}")
+        let regPassword = new RegExp("\\w{6,20}")
+        if(!regEmail.test(email)){
+            alert('邮箱地址至少包含@和.com')
+            return false
+        }else if(!regUsername.test(username)){
+            alert('用户长度为3-10个字符')
+            return false
+        }else if(!regPassword.test(password)){
+            alert('密码长度为6-20个字符')
+            return false
+        }
+        return true
+    }
 
     changeFormData(key, e) {
         let stateCopy = JSON.parse(JSON.stringify(this.state)) //JSON深拷贝
