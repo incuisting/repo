@@ -30,7 +30,6 @@ class CalendarBody extends React.Component{
         let selectedDay = this.props.currentDay;
         let dateArray=this.props.dateArray;
 
-        console.log('dateArray',dateArray)
         let cx = ReactAddons.classSet;
 
         let isToday = function(){

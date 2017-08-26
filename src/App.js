@@ -21,17 +21,8 @@ class App extends Component {
         }
 
         //从leancloud获取用户信息
-        let user = getCurrentUser()
-        if (user) {
-            TodoModel.getByUser(user, (todos) => {
-                let stateCopy = JSON.parse(JSON.stringify(this.state))
-                stateCopy.todoList = todos
-                this.setState(stateCopy)
-                this.filterTodoDate(this.state.todoList)
-                console.log('从leancloud获取用户信息',this.state)
+        this.initTodoGetByUser();
 
-            })
-        }
     }
     componentWillMount(){
         this.getToday() //在挂载之前就获取今天的日期，以便传递给todo里面
@@ -63,9 +54,25 @@ class App extends Component {
                     null :
                     <UserDialog
                         onSignUp={this.onSignUpOrSignIn.bind(this)}
-                        onSignIn={this.onSignUpOrSignIn.bind(this)}/>}
+                        onSignIn={this.onSignUpOrSignIn.bind(this)}
+                        todoInit={this.initTodoGetByUser.bind(this)}
+                    />}
             </div>
         )
+    }
+
+    initTodoGetByUser(){
+        let user = getCurrentUser()
+        if (user) {
+            TodoModel.getByUser(user, (todos) => {
+                let stateCopy = JSON.parse(JSON.stringify(this.state))
+                stateCopy.todoList = todos
+                this.setState(stateCopy)
+                this.filterTodoDate(this.state.todoList)
+                console.log('从leancloud获取用户信息',this.state)
+
+            })
+        }
     }
 
     filterTodoDate(todoList){

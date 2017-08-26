@@ -31,11 +31,13 @@ export default class UserDialog extends Component {
         }
         let success = (user) => {
             this.props.onSignUp.call(null, user)
+            this.props.todoInit.call(null)
         }
         let error = (error) => {
             switch (error.code) {
                 case 200:
                     alert('没有提供用户名，或者用户名为空')
+                    break
                 case 202:
                     alert('用户名已被占用，换个试试？')
                     break
@@ -44,6 +46,7 @@ export default class UserDialog extends Component {
                     break
                 case 125:
                     alert('没有@的邮箱地址就是咸鱼！！')
+                    break
                 default:
                     alert(error)
                     break
@@ -56,7 +59,8 @@ export default class UserDialog extends Component {
         e.preventDefault()
         let {username, password} = this.state.formData
         let success = (user) => {
-            this.props.onSignUp.call(null, user)
+            this.props.onSignIn.call(null, user)
+            this.props.todoInit.call(null)
         }
         let error = (error) => {
             switch (error.code) {
